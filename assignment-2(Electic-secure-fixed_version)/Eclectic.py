@@ -184,12 +184,14 @@ def register():
 @app.route("/api-service/register/validate/password/", methods=["POST"])
 def register_validate_password():
     dat = request.get_json(force=True)
-    if dat["new"] == dat["confirm"] and pass_check(dat["new"]):
+    if dat["new"] == dat["confirm"] and pass_check(dat["new"]) and len(dat["new"])>15:
         return jsonify({"success":"true"})
     if dat["new"] != dat["confirm"]:
         return jsonify({"success":"false", "message":"New passwords do not match"})
     elif not pass_check(dat["new"]):
         return jsonify({"success":"false", "message":"New password must have numbers, letters and special characters"})
+    elif len(dat["new"])<15:
+        return jsonify({"success": "false", "message": "New passwords must be at least 15 characters"})
 
 
 # Supporting register route - validate email
