@@ -116,7 +116,7 @@ $(document).ready(function () {
                   icon: "error",
               });
               error = true;
-              break;
+              break
             }
         }
         if (!error) {
@@ -134,8 +134,8 @@ $(document).ready(function () {
                         text: "Quantity cannot be 0/negative number"
                     })
                       .then(() => {
-                          break;
-                      })
+                          break
+                      });
                 }
                 const i_dat = {
                     "id": product_id,
